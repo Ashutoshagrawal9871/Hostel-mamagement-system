@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HostelHub | Hostel Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">H</div><div><strong>HostelHub</strong><small>MANAGEMENT PORTAL</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav-link active" data-page="dashboard"><span>▦</span> Dashboard</button>
+    <button class="nav-link" data-page="students"><span>♙</span> Students</button>
+    <button class="nav-link" data-page="rooms"><span>⌂</span> Room allocation</button>
+    <button class="nav-link" data-page="fees"><span>₹</span> Fee records</button>
+    <button class="nav-link" data-page="complaints"><span>☷</span> Complaints</button>
+    <div class="sidebar-bottom"><div class="avatar">AD</div><div><strong>Hostel Admin</strong><small>Administrator</small></div><span class="online-dot"></span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">HOSTEL ADMINISTRATION</span><h1 id="page-title">Dashboard</h1></div><div class="top-actions"><span class="date-pill" id="today"></span><div class="avatar">AD</div></div></header>
+    <div id="alert" class="alert hidden"></div>
+    <section id="dashboard-page" class="page">
+      <div class="welcome"><div><span class="eyebrow light">OVERVIEW</span><h2>Welcome back, Admin 👋</h2><p>Here’s what’s happening at your hostel today.</p></div><div class="welcome-icon">⌂</div></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>Total Students</span><span class="stat-icon purple">♙</span></div><strong id="stat-students">0</strong><small>Registered residents</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Total Rooms</span><span class="stat-icon blue">⌂</span></div><strong id="stat-rooms">0</strong><small>Across the hostel</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Available Beds</span><span class="stat-icon green">✓</span></div><strong id="stat-beds">0</strong><small>Ready for allocation</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Fees Collected</span><span class="stat-icon orange">₹</span></div><strong id="stat-fees">₹0</strong><small>Recorded paid fees</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel"><div class="panel-heading"><div><h3>Quick actions</h3><p>Common hostel administration tasks</p></div></div><div class="quick-grid">
+          <button class="quick-action" data-go="students"><span class="quick-icon purple">＋</span><b>Register student</b><small>Add a new resident</small></button>
+          <button class="quick-action" data-go="rooms"><span class="quick-icon blue">⌂</span><b>View rooms</b><small>Check bed availability</small></button>
+          <button class="quick-action" data-go="fees"><span class="quick-icon orange">₹</span><b>Record a fee</b><small>Update payment details</small></button>
+          <button class="quick-action" data-go="complaints"><span class="quick-icon green">☷</span><b>View complaints</b><small>Handle resident issues</small></button>
+        </div></article>
+        <article class="panel"><div class="panel-heading"><div><h3>Hostel snapshot</h3><p>Current occupancy overview</p></div></div><div class="occupancy"><div class="occupancy-number" id="occupancy-number">0%</div><div><b>Bed occupancy</b><small id="occupancy-text">0 of 0 beds occupied</small></div></div><div class="progress"><span id="occupancy-bar"></span></div><div class="snapshot-row"><span>Open complaints</span><b id="stat-complaints">0</b></div><div class="snapshot-row"><span>Fee records</span><b id="stat-fee-records">0</b></div></article>
+      </div>
+      <div class="note">Demo project · Data is stored in memory and resets when the Spring Boot application restarts.</div>
+    </section>
+
+    <section id="students-page" class="page hidden">
+      <div class="section-head"><div><h2>Student directory</h2><p>Register and manage hostel residents.</p></div><button class="primary-btn" id="add-student-btn">＋ Add student</button></div>
+      <div class="toolbar"><input id="student-search" class="search" placeholder="Search by name, email or course..."></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>EMAIL</th><th>PHONE</th><th>COURSE</th><th>ROOM</th><th>ACTION</th></tr></thead><tbody id="students-table"></tbody></table></div><div id="students-empty" class="empty hidden">No students registered yet. Add your first student.</div></div>
+    </section>
+
+    <section id="rooms-page" class="page hidden">
+      <div class="section-head"><div><h2>Room allocation</h2><p>Create and manage room capacity and bed availability.</p></div><button class="primary-btn" id="add-room-btn">Add room</button></div>
+      <div class="room-legend"><span><i class="dot available"></i> Available</span><span><i class="dot full"></i> Full</span></div>
+      <div id="rooms-grid" class="rooms-grid"></div>
+    </section>
+
+    <section id="fees-page" class="page hidden">
+      <div class="section-head"><div><h2>Fee records</h2><p>Keep track of hostel fee payments.</p></div><button class="primary-btn" id="add-fee-btn">＋ Record fee</button></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>RECORD</th><th>STUDENT</th><th>AMOUNT</th><th>DATE</th><th>STATUS</th></tr></thead><tbody id="fees-table"></tbody></table></div><div id="fees-empty" class="empty hidden">No fee records yet.</div></div>
+    </section>
+
+    <section id="complaints-page" class="page hidden">
+      <div class="section-head"><div><h2>Complaint centre</h2><p>Review and resolve student complaints.</p></div><button class="primary-btn" id="add-complaint-btn">＋ New complaint</button></div>
+      <div id="complaints-list" class="complaints-list"></div><div id="complaints-empty" class="empty panel hidden">No complaints submitted yet.</div>
+    </section>
+    <footer>HostelHub <span>·</span> Simple Hostel Management System</footer>
+  </main>
+</div>
+
+<div id="modal-backdrop" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-head"><div><span class="eyebrow">HOSTELHUB</span><h2 id="modal-title">Add student</h2></div><button class="close-btn" id="modal-close">×</button></div>
+    <form id="modal-form"><div id="modal-fields" class="form-grid"></div><div class="modal-actions"><button type="button" class="secondary-btn" id="modal-cancel">Cancel</button><button type="submit" class="primary-btn">Save details</button></div></form>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
