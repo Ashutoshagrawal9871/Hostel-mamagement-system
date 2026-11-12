@@ -1,4 +1,4 @@
-const API = window.location.port === '8090' ? '/api' : 'http://localhost:8090/api';
+const API = '/api';
 let students = [], rooms = [], fees = [], complaints = [];
 const $ = id => document.getElementById(id);
 const money = n => '₹' + Number(n || 0).toLocaleString('en-IN', {maximumFractionDigits:2});

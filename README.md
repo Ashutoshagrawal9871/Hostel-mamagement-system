@@ -30,6 +30,16 @@ A beginner-friendly Hostel Management System built with Java, Spring Boot and a 
 
 The first run needs an internet connection so Maven can download Spring Boot dependencies.
 
+## Deploy on Vercel
+
+The repository includes a Node.js Vercel Function that mirrors the Spring Boot API so the frontend and API can be deployed together:
+
+```bash
+npx vercel --prod
+```
+
+The application uses in-memory demo data. Vercel Functions can be restarted at any time, so data entered in the deployed site is not permanent.
+
 ## Demo flow for your teacher
 1. Open Dashboard.
 2. Register two students and allocate them to rooms.
